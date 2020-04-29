@@ -47,5 +47,5 @@ spec:
             cpu: {{ .Values.serviceindex.resources.limits.cpu }}
             memory: {{ .Values.serviceindex.resources.limits.memory }}
 {{ include "nodeSelector" . | indent 8 }}
-        securityContext:
-{{ toYaml .Values.serviceindex.containerSecurityContext | indent 10}}
+      securityContext:
+{{ toYaml .Values.serviceindex.securityContext | indent 8}}

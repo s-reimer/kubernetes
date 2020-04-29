@@ -133,5 +133,5 @@ spec:
           timeoutSeconds: {{ .Values.serviceapi.readinessProbe.timeoutSeconds }}
           failureThreshold: {{ .Values.serviceapi.readinessProbe.failureThreshold }}
 {{ include "nodeSelector" . | indent 8 }}
-        securityContext:
-{{ toYaml .Values.serviceapi.containerSecurityContext | indent 10}}
+      securityContext:
+{{ toYaml .Values.serviceapi.securityContext | indent 8}}

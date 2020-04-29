@@ -88,5 +88,5 @@ spec:
           timeoutSeconds: 3
           failureThreshold: 5
 {{ include "nodeSelector" . | indent 8 }}
-        securityContext:
-{{ toYaml .Values.uat.containerSecurityContext | indent 10}}
+      securityContext:
+{{ toYaml .Values.uat.securityContext | indent 8}}
