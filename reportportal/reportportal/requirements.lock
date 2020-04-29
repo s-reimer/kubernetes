@@ -1,0 +1,15 @@
+dependencies:
+- name: postgresql
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 8.6.2
+- name: rabbitmq-ha
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 1.18.0
+- name: elasticsearch
+  repository: https://helm.elastic.co
+  version: 7.6.1
+- name: minio
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 2.5.12
+digest: sha256:341d72ec27105a7bbdc246262e34f8a14d3cfc0cc2cb81337929130e3fc4f327
+generated: "2020-04-29T12:24:59.253323-04:00"

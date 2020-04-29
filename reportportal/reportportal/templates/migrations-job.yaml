@@ -7,8 +7,6 @@ metadata:
     "helm.sh/hook": "pre-install,pre-upgrade"
     "helm.sh/hook-delete-policy": "before-hook-creation,hook-succeeded"
 spec:
-  securityContext:
-{{ toYaml .Values.migrations.podSecurityContext | indent 4}}
   template:
     metadata:
       labels:

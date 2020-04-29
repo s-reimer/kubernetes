@@ -19,7 +19,6 @@ serviceindex:
       cpu: 200m
       memory: 256Mi
   podAnnotations: {}
-  podSecurityContext: {}
   containerSecurityContext: {}
 
 uat:
@@ -37,7 +36,6 @@ uat:
   sessionLiveTime: 86400
   podAnnotations: {}
   jvmArgs: "-Djava.security.egd=file:/dev/./urandom -XX:MinRAMPercentage=60.0 -XX:MaxRAMPercentage=90.0"
-  podSecurityContext: {}
   containerSecurityContext: {}
 
 serviceui:
@@ -53,7 +51,6 @@ serviceui:
       cpu: 200m
       memory: 128Mi
   podAnnotations: {}
-  podSecurityContext: {}
   containerSecurityContext: {}
 
 serviceapi:
@@ -78,7 +75,6 @@ serviceapi:
     totalNumber: 
     perPodNumber: 
   podAnnotations: {}
-  podSecurityContext: {}
   containerSecurityContext: {}
 
 migrations:
@@ -93,7 +89,6 @@ migrations:
       cpu: 100m
       memory: 128Mi
   podAnnotations: {}
-  podSecurityContext: {}
   containerSecurityContext: {}
 
 serviceanalyzer:
@@ -109,7 +104,6 @@ serviceanalyzer:
       cpu: 100m
       memory: 512Mi
   podAnnotations: {}
-  podSecurityContext: {}
   containerSecurityContext: {}
 
 rabbitmq:
