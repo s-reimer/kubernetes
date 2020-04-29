@@ -112,7 +112,7 @@ serviceanalyzer:
   podSecurityContext: {}
   containerSecurityContext: {}
 
-rabbitmq-ha:
+rabbitmq:
   SecretName: ""
   installdep:
     enable: false

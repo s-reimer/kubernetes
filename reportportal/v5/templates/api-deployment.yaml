@@ -41,31 +41,31 @@ spec:
           value: "{{ .Values.serviceapi.jvmArgs }}"
         {{ end }}
         - name: RP_AMQP_HOST
-          value: "{{ .Values.rabbitmq-ha.endpoint.address }}"
+          value: "{{ .Values.rabbitmq.endpoint.address }}"
         - name: RP_AMQP_PORT
-          value: "{{ .Values.rabbitmq-ha.endpoint.port }}"
+          value: "{{ .Values.rabbitmq.endpoint.port }}"
         - name: RP_AMQP_USER
-          value: "{{ .Values.rabbitmq-ha.endpoint.user }}"
+          value: "{{ .Values.rabbitmq.endpoint.user }}"
         - name: RP_AMQP_PASS
-        {{ if .Values.rabbitmq-ha.endpoint.cloudservice }}
-          value: "{{ .Values.rabbitmq-ha.endpoint.password }}"
+        {{ if .Values.rabbitmq.endpoint.cloudservice }}
+          value: "{{ .Values.rabbitmq.endpoint.password }}"
         {{ else }}
           valueFrom:
             secretKeyRef:
-              name: "{{ .Values.rabbitmq-ha.SecretName }}"
+              name: "{{ .Values.rabbitmq.SecretName }}"
               key: "rabbitmq-password"
         {{ end }}
         - name: RP_AMQP_APIPORT
-          value: "{{ .Values.rabbitmq-ha.endpoint.apiport }}"
+          value: "{{ .Values.rabbitmq.endpoint.apiport }}"
         - name: RP_AMQP_APIUSER
-          value: "{{ .Values.rabbitmq-ha.endpoint.apiuser }}"
+          value: "{{ .Values.rabbitmq.endpoint.apiuser }}"
         - name: RP_AMQP_APIPASS
-        {{ if .Values.rabbitmq-ha.endpoint.cloudservice }}
-          value: "{{ .Values.rabbitmq-ha.endpoint.password }}"
+        {{ if .Values.rabbitmq.endpoint.cloudservice }}
+          value: "{{ .Values.rabbitmq.endpoint.password }}"
         {{ else }}
           valueFrom:
             secretKeyRef:
-              name: "{{ .Values.rabbitmq-ha.SecretName }}"
+              name: "{{ .Values.rabbitmq.SecretName }}"
               key: "rabbitmq-password"
         {{ end }}
         - name: RP_DB_HOST
