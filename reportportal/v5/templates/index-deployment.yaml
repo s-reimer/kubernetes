@@ -5,6 +5,8 @@ metadata:
   labels: {{ include "labels" . | indent 4 }}
 spec:
   replicas: 1
+  securityContext:
+{{ toYaml .Values.serviceindex.podSecurityContext | indent 4 }}
   selector:
     matchLabels:
       component: {{ include "reportportal.fullname" . }}-index
@@ -47,3 +49,5 @@ spec:
             cpu: {{ .Values.serviceindex.resources.limits.cpu }}
             memory: {{ .Values.serviceindex.resources.limits.memory }}
 {{ include "nodeSelector" . | indent 8 }}
+        securityContext:
+{{ toYaml .Values.serviceindex.containerSecurityContext | indent 10}}

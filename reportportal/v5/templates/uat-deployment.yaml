@@ -5,6 +5,8 @@ metadata:
   labels: {{ include "labels" . | indent 4 }}
 spec:
   replicas: 1
+  securityContext:
+{{ toYaml .Values.uat.podSecurityContext | indent 4}}
   selector:
     matchLabels:
       component: {{ include "reportportal.fullname" . }}-uat
@@ -88,3 +90,5 @@ spec:
           timeoutSeconds: 3
           failureThreshold: 5
 {{ include "nodeSelector" . | indent 8 }}
+        securityContext:
+{{ toYaml .Values.uat.containerSecurityContext | indent 10}}

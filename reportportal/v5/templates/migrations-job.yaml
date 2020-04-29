@@ -7,6 +7,8 @@ metadata:
     "helm.sh/hook": "pre-install,pre-upgrade"
     "helm.sh/hook-delete-policy": "before-hook-creation,hook-succeeded"
 spec:
+  securityContext:
+{{ toYaml .Values.migrations.podSecurityContext | indent 4}}
   template:
     metadata:
       labels:
@@ -46,3 +48,5 @@ spec:
             cpu: {{ .Values.migrations.resources.limits.cpu }}
             memory: {{ .Values.migrations.resources.limits.memory }}
 {{ include "nodeSelector" . | indent 8 }}
+        securityContext:
+{{ toYaml .Values.migrations.containerSecurityContext | indent 10}}

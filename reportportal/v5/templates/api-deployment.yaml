@@ -5,6 +5,8 @@ metadata:
   labels: {{ include "labels" . | indent 4 }}
 spec:
   replicas: {{ .Values.serviceapi.replicaCount | default 1 }}
+  securityContext:
+  {{ toYaml .Values.serviceapi.podSecurityContext | indent 4 }}
   selector:
     matchLabels:
       component: {{ include "reportportal.fullname" . }}-api
@@ -39,31 +41,31 @@ spec:
           value: "{{ .Values.serviceapi.jvmArgs }}"
         {{ end }}
         - name: RP_AMQP_HOST
-          value: "{{ .Values.rabbitmq.endpoint.address }}"
+          value: "{{ .Values.rabbitmq-ha.endpoint.address }}"
         - name: RP_AMQP_PORT
-          value: "{{ .Values.rabbitmq.endpoint.port }}"
+          value: "{{ .Values.rabbitmq-ha.endpoint.port }}"
         - name: RP_AMQP_USER
-          value: "{{ .Values.rabbitmq.endpoint.user }}"
+          value: "{{ .Values.rabbitmq-ha.endpoint.user }}"
         - name: RP_AMQP_PASS
-        {{ if .Values.rabbitmq.endpoint.cloudservice }}
-          value: "{{ .Values.rabbitmq.endpoint.password }}"
+        {{ if .Values.rabbitmq-ha.endpoint.cloudservice }}
+          value: "{{ .Values.rabbitmq-ha.endpoint.password }}"
         {{ else }}
           valueFrom:
             secretKeyRef:
-              name: "{{ .Values.rabbitmq.SecretName }}"
+              name: "{{ .Values.rabbitmq-ha.SecretName }}"
               key: "rabbitmq-password"
         {{ end }}
         - name: RP_AMQP_APIPORT
-          value: "{{ .Values.rabbitmq.endpoint.apiport }}"
+          value: "{{ .Values.rabbitmq-ha.endpoint.apiport }}"
         - name: RP_AMQP_APIUSER
-          value: "{{ .Values.rabbitmq.endpoint.apiuser }}"
+          value: "{{ .Values.rabbitmq-ha.endpoint.apiuser }}"
         - name: RP_AMQP_APIPASS
-        {{ if .Values.rabbitmq.endpoint.cloudservice }}
-          value: "{{ .Values.rabbitmq.endpoint.password }}"
+        {{ if .Values.rabbitmq-ha.endpoint.cloudservice }}
+          value: "{{ .Values.rabbitmq-ha.endpoint.password }}"
         {{ else }}
           valueFrom:
             secretKeyRef:
-              name: "{{ .Values.rabbitmq.SecretName }}"
+              name: "{{ .Values.rabbitmq-ha.SecretName }}"
               key: "rabbitmq-password"
         {{ end }}
         - name: RP_DB_HOST
@@ -133,3 +135,5 @@ spec:
           timeoutSeconds: {{ .Values.serviceapi.readinessProbe.timeoutSeconds }}
           failureThreshold: {{ .Values.serviceapi.readinessProbe.failureThreshold }}
 {{ include "nodeSelector" . | indent 8 }}
+        securityContext:
+{{ toYaml .Values.serviceapi.containerSecurityContext | indent 10}}
