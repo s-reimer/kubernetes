@@ -78,8 +78,6 @@ serviceapi:
   securityContext: {}
 
 migrations:
-  annotations:
-    hook: "pre-install,pre-upgrade"
   repository: reportportal/migrations
   tag: 5.1.0
   pullPolicy: Always
