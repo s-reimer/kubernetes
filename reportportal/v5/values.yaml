@@ -76,6 +76,7 @@ serviceapi:
     perPodNumber: 
   podAnnotations: {}
   securityContext: {}
+  serviceAccountName: ""
 
 migrations:
   repository: reportportal/migrations

@@ -135,3 +135,4 @@ spec:
 {{ include "nodeSelector" . | indent 8 }}
       securityContext:
 {{ toYaml .Values.serviceapi.securityContext | indent 8}}
+      serviceAccountName: {{ .Values.serviceapi.serviceAccount }}
