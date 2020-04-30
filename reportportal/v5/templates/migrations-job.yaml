@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: {{ include "reportportal.fullname" . }}-migrations
-  labels: {{ include "labels" . | indent 4 }
+  labels: {{ include "labels" . | indent 4 }}
 spec:
   template:
     metadata:
