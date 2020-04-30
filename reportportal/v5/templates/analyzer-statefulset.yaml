@@ -50,4 +50,3 @@ spec:
 {{ include "nodeSelector" . | indent 8 }}
       securityContext:
 {{ toYaml .Values.serviceanalyzer.securityContext | indent 8}}
-
