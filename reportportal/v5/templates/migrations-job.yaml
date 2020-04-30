@@ -2,10 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: {{ include "reportportal.fullname" . }}-migrations
-  labels: {{ include "labels" . | indent 4 }}
-  annotations:
-#    "helm.sh/hook": {{ .Values.migrations.annotations.hook }} Come back and fix this
-#    "helm.sh/hook-delete-policy": "before-hook-creation,hook-succeeded"
+  labels: {{ include "labels" . | indent 4 }
 spec:
   template:
     metadata:
